@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ollie Bearman - Formula 1 Driver",
-  description: "Official website of Ollie Bearman, MoneyGram Haas F1 Team Formula 1 Driver",
+  title: "Atle Lie McGrath - Alpine Racer",
+  description: "Official website of Atle Lie McGrath, Alpine Racer",
 };
 
 export default function RootLayout({

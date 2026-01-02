@@ -14,7 +14,7 @@ export default function Home() {
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
               </svg>
             </div>
-            <span className="text-xl md:text-3xl font-bold text-white drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">OB</span>
+            <span className="text-xl md:text-3xl font-bold text-white drop-shadow-[2px_2px_0px_rgba(0,0,0,1)]">ALM</span>
           </div>
 
           {/* Navigation Links */}
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="absolute inset-0">
             <Image
               src="/atle-cowboy.png"
-              alt="Ollie Bearman"
+              alt="Atle Lie McGrath"
               fill
               className="object-cover object-center"
               priority
@@ -61,13 +61,13 @@ export default function Home() {
           {/* Text Overlays - Bottom Left */}
           <div className="absolute bottom-8 md:bottom-20 left-6 md:left-12 z-10">
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter mb-1 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.3)] leading-none">
-              OLLIE
+              ATLE
             </h1>
             <h2 className="text-4xl md:text-6xl lg:text-8xl font-black text-white uppercase tracking-tighter mb-4 md:mb-6 drop-shadow-[3px_3px_0px_rgba(0,0,0,0.3)] leading-none">
-              BEARMAN
+              LIE MCGRATH
             </h2>
             <p className="text-[#FFD700] text-sm md:text-lg lg:text-xl font-bold uppercase tracking-widest">
-              MONEYGRAM HAAS F1 TEAM FORMULA 1 DRIVER
+              ALPINE RACER
             </p>
           </div>
         </div>
