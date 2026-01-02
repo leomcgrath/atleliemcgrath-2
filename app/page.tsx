@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Header from "./components/Header";
 import RaceCalendar from "./components/RaceCalendar";
+import Partners from "./components/Partners";
 
 export default function Home() {
   return (
@@ -103,6 +104,9 @@ export default function Home() {
 
       {/* Race Calendar */}
       <RaceCalendar />
+
+      {/* Partners */}
+      <Partners />
 
       {/* Footer */}
       <footer className="bg-[#0a0e27] h-16 w-full"></footer>
