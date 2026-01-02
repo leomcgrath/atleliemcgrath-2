@@ -7,37 +7,7 @@ import About from "./components/About";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white relative">
-      {/* Background images starting from top - behind everything */}
-      <div className="absolute inset-0 z-0 min-h-screen">
-        {/* Left side image */}
-        <div className="absolute inset-0 w-3/5 left-0">
-          <Image
-            src="/atle-cowboy.png"
-            alt="Background"
-            fill
-            className="object-cover object-center"
-            quality={90}
-          />
-          <div className="absolute inset-0 backdrop-blur-md bg-slate-200/40"></div>
-        </div>
-        
-        {/* Vertical divider line */}
-        <div className="absolute left-[60%] top-0 bottom-0 w-px bg-black/20 z-10"></div>
-        
-        {/* Right side image */}
-        <div className="absolute inset-0 w-2/5 right-0">
-          <Image
-            src="/atle-standing.png"
-            alt="Background"
-            fill
-            className="object-cover object-center"
-            quality={90}
-          />
-          <div className="absolute inset-0 backdrop-blur-md bg-teal-600/40"></div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Header - on top of images */}
       <Header />
 
