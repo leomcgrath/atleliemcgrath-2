@@ -1,26 +1,66 @@
 "use client";
 
+import Image from "next/image";
+
 interface Partner {
   name: string;
   brandingColor: string;
   description: string;
   website?: string;
   tagline?: string;
+  image: string;
 }
 
 const partners: Partner[] = [
   {
-    name: "AVENTUM",
-    brandingColor: "#0a1a2e", // Dark teal/blue
-    description: "Aventum, our people make reinsurance better. We never stand still, we forever challenge complacency and we believe that anything is possible.",
-    website: "https://aventum.com",
+    name: "HEAD",
+    brandingColor: "#000000", // Black
+    description: "HEAD is a leading manufacturer of sports equipment, specializing in tennis, skiing, and other performance sports. With a commitment to innovation and excellence, HEAD provides athletes with cutting-edge gear designed to enhance performance.",
+    website: "https://www.head.com",
+    image: "/partners/head.webp",
   },
   {
-    name: "EUROSPARES",
-    brandingColor: "#DC143C", // Vibrant red
-    description: "Eurospares are the world's largest supplier of new and used spare parts for Ferrari, Lamborghini, Maserati, Porsche, Aston Martin and other supercars.",
-    website: "https://eurospares.co.uk",
-    tagline: "A passion for parts since 1985.",
+    name: "LEKI",
+    brandingColor: "#000000", // Black
+    description: "LEKI is the world's leading manufacturer of ski poles, trekking poles, and outdoor accessories. With over 70 years of experience, LEKI combines German engineering precision with innovative design to create premium equipment for outdoor enthusiasts.",
+    website: "https://www.leki.com",
+    image: "/partners/leki.svg",
+  },
+  {
+    name: "LEVEL",
+    brandingColor: "#000000", // Black
+    description: "LEVEL is a premium ski brand dedicated to creating high-performance ski equipment. With a focus on quality and innovation, LEVEL provides skiers with gear that delivers exceptional performance on the slopes.",
+    website: "https://www.levelski.com",
+    image: "/partners/level.jpg",
+  },
+  {
+    name: "Pfanner",
+    brandingColor: "#FFD700", // Gold/Yellow (from the banner)
+    description: "Pfanner has been producing premium quality products since 1856. With a rich heritage spanning over 160 years, Pfanner combines traditional craftsmanship with modern innovation to deliver exceptional quality in all their products.",
+    website: "https://www.pfanner.com",
+    tagline: "PREMIUM QUALITY SINCE 1856",
+    image: "/partners/pfanner.jpg",
+  },
+  {
+    name: "BRASS AVALANCHE",
+    brandingColor: "#1E3A8A", // Blue (from the logo)
+    description: "BRASS AVALANCHE is a dynamic brand that embodies the spirit of adventure and the power of nature. With a focus on quality and performance, BRASS AVALANCHE creates products designed for those who seek the extraordinary.",
+    website: "https://www.brassavalanche.com",
+    image: "/partners/brass.png",
+  },
+  {
+    name: "SPORTMASTER",
+    brandingColor: "#0066CC", // Blue (from the runner logo)
+    description: "SPORTMASTER is a leading sports brand dedicated to empowering athletes and sports enthusiasts. With a focus on performance, innovation, and quality, SPORTMASTER provides gear and equipment designed to help athletes achieve their goals.",
+    website: "https://www.sportmaster.com",
+    image: "/partners/sportmaster.png",
+  },
+  {
+    name: "KVITFJELL",
+    brandingColor: "#000000", // Black
+    description: "KVITFJELL is a premier ski resort destination offering world-class skiing and snowboarding experiences. Nestled in the Norwegian mountains, KVITFJELL provides exceptional slopes and facilities for winter sports enthusiasts of all levels.",
+    website: "https://www.kvitfjell.no",
+    image: "/partners/kvitfjell.png",
   },
 ];
 
@@ -67,29 +107,20 @@ export default function PartnersPage() {
               className="w-full md:w-2/5 flex items-center justify-center p-8 md:p-12 lg:p-16"
               style={{ backgroundColor: partner.brandingColor }}
             >
-              <div className="text-center">
-                {partner.name === "EUROSPARES" ? (
-                  <>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white lowercase tracking-tighter mb-4">
-                      eurospares
-                    </h2>
-                    {partner.tagline && (
-                      <p className="text-white/90 text-sm md:text-base lg:text-lg italic font-light">
-                        {partner.tagline}
-                      </p>
-                    )}
-                  </>
-                ) : (
-                  <>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tighter mb-4">
-                      {partner.name}
-                    </h2>
-                    {partner.tagline && (
-                      <p className="text-white/90 text-sm md:text-base lg:text-lg italic font-light">
-                        {partner.tagline}
-                      </p>
-                    )}
-                  </>
+              <div className="text-center w-full max-w-md">
+                <div className="relative w-full h-48 md:h-64 lg:h-80 mb-6">
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+                  />
+                </div>
+                {partner.tagline && (
+                  <p className="text-white/90 text-sm md:text-base lg:text-lg italic font-light">
+                    {partner.tagline}
+                  </p>
                 )}
               </div>
             </div>
@@ -156,13 +187,15 @@ export default function PartnersPage() {
                 key={index}
                 className="text-center"
               >
-                <h4 className="text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tighter">
-                  {partner.name === "EUROSPARES" ? (
-                    <span className="lowercase">eurospares</span>
-                  ) : (
-                    <span className="uppercase">{partner.name}</span>
-                  )}
-                </h4>
+                <div className="relative w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 mb-4 bg-white rounded-lg p-4 flex items-center justify-center">
+                  <Image
+                    src={partner.image}
+                    alt={partner.name}
+                    fill
+                    className="object-contain p-2"
+                    sizes="(max-width: 768px) 128px, (max-width: 1200px) 160px, 192px"
+                  />
+                </div>
                 {partner.tagline && (
                   <p className="text-white/70 text-xs md:text-sm italic mt-2">
                     {partner.tagline}
