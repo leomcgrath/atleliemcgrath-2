@@ -7,7 +7,7 @@ export default function Home() {
       {/* Background images starting from top - behind everything */}
       <div className="absolute inset-0 z-0 min-h-screen">
         {/* Left side image */}
-        <div className="absolute inset-0 w-1/2 left-0">
+        <div className="absolute inset-0 w-3/5 left-0">
           <Image
             src="/atle-cowboy.png"
             alt="Background"
@@ -19,10 +19,10 @@ export default function Home() {
         </div>
         
         {/* Vertical divider line */}
-        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black/20 z-10 transform -translate-x-1/2"></div>
+        <div className="absolute left-[60%] top-0 bottom-0 w-px bg-black/20 z-10"></div>
         
         {/* Right side image */}
-        <div className="absolute inset-0 w-1/2 right-0">
+        <div className="absolute inset-0 w-2/5 right-0">
           <Image
             src="/atle-standing.png"
             alt="Background"
@@ -40,7 +40,7 @@ export default function Home() {
       {/* Main Hero Section - Split Layout */}
       <main className="flex flex-col md:flex-row min-h-screen relative z-10">
         {/* Left Section - Portrait */}
-        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="w-full md:w-3/5 relative overflow-hidden min-h-[50vh] md:min-h-full">
           {/* Portrait image - same as background but without blur for content area */}
           <div className="absolute inset-0">
             <Image
@@ -69,7 +69,7 @@ export default function Home() {
         </div>
 
         {/* Right Section - Merchandise/Sale */}
-        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+        <div className="w-full md:w-2/5 relative overflow-hidden min-h-[50vh] md:min-h-full">
           {/* Merchandise image - same as background but without blur for content area */}
           <div className="absolute inset-0">
             <Image
