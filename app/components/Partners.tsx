@@ -10,23 +10,39 @@ interface Partner {
 
 const partners: Partner[] = [
   {
-    name: "Partner 1",
-    // Add logo URLs when available
+    name: "HEAD",
+    logoUrl: "/partners/head.webp",
+    website: "https://www.head.com",
   },
   {
-    name: "Partner 2",
+    name: "LEKI",
+    logoUrl: "/partners/leki.svg",
+    website: "https://www.leki.com",
   },
   {
-    name: "Partner 3",
+    name: "LEVEL",
+    logoUrl: "/partners/level.jpg",
+    website: "https://www.levelski.com",
   },
   {
-    name: "Partner 4",
+    name: "Pfanner",
+    logoUrl: "/partners/pfanner.jpg",
+    website: "https://www.pfanner.com",
   },
   {
-    name: "Partner 5",
+    name: "BRASS AVALANCHE",
+    logoUrl: "/partners/brass.png",
+    website: "https://www.brassavalanche.com",
   },
   {
-    name: "Partner 6",
+    name: "SPORTMASTER",
+    logoUrl: "/partners/sportmaster.png",
+    website: "https://www.sportmaster.com",
+  },
+  {
+    name: "KVITFJELL",
+    logoUrl: "/partners/kvitfjell.png",
+    website: "https://www.kvitfjell.no",
   },
 ];
 
@@ -43,29 +59,32 @@ export default function Partners() {
         </div>
 
         {/* Partners Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-8 md:gap-12">
           {partners.map((partner, index) => (
-            <div
+            <a
               key={index}
-              className="flex items-center justify-center p-6 md:p-8 bg-white/5 rounded-xl border border-white/10 hover:bg-white/10 hover:border-[#FFD700]/50 transition-all duration-300 group"
+              href={partner.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center p-4 md:p-6 bg-white rounded-xl border border-white/20 hover:bg-white/90 hover:border-[#FFD700] hover:shadow-lg transition-all duration-300 group aspect-square"
             >
               {partner.logoUrl ? (
-                <div className="relative w-full h-20 md:h-24">
-                  <Image
-                    src={partner.logoUrl}
-                    alt={partner.name}
-                    fill
-                    className="object-contain filter brightness-0 invert group-hover:brightness-100 group-hover:invert-0 transition-all duration-300"
-                  />
-                </div>
+                <Image
+                  src={partner.logoUrl}
+                  alt={partner.name}
+                  width={200}
+                  height={200}
+                  className="w-full h-full object-contain transition-all duration-300 group-hover:scale-110"
+                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 14vw"
+                />
               ) : (
-                <div className="text-white/40 group-hover:text-[#FFD700] text-center transition-colors duration-300">
+                <div className="text-gray-800 group-hover:text-[#FFD700] text-center transition-colors duration-300">
                   <p className="text-sm md:text-base font-bold uppercase tracking-wider">
                     {partner.name}
                   </p>
                 </div>
               )}
-            </div>
+            </a>
           ))}
         </div>
       </div>
