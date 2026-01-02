@@ -16,143 +16,35 @@ export default function Instagram() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    async function fetchPosts() {
-      try {
-        setIsLoading(true);
-        const response = await fetch("/api/instagram");
-        const data = await response.json();
-
-        if (data.posts && data.posts.length > 0) {
-          setInstagramPosts(data.posts);
-        } else {
-          // Fallback to placeholder images if API fails
-          setInstagramPosts([
-            {
-              id: "1",
-              imageUrl: "/atle-cowboy.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-              isLarge: true,
-            },
-            {
-              id: "2",
-              imageUrl: "/atle-standing.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "3",
-              imageUrl: "/atle-half-shave.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "4",
-              imageUrl: "/atle-cowboy.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "5",
-              imageUrl: "/atle-standing.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-              isLarge: true,
-            },
-            {
-              id: "6",
-              imageUrl: "/atle-half-shave.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "7",
-              imageUrl: "/atle-cowboy.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "8",
-              imageUrl: "/atle-standing.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-            {
-              id: "9",
-              imageUrl: "/atle-half-shave.png",
-              alt: "Instagram post",
-              permalink: "https://www.instagram.com/atleliemcgrath/",
-            },
-          ]);
-        }
-      } catch (err) {
-        console.error("Error fetching Instagram posts:", err);
-        setError("Failed to load Instagram posts");
-        // Set fallback images on error
-        setInstagramPosts([
-          {
-            id: "1",
-            imageUrl: "/atle-cowboy.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-            isLarge: true,
-          },
-          {
-            id: "2",
-            imageUrl: "/atle-standing.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "3",
-            imageUrl: "/atle-half-shave.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "4",
-            imageUrl: "/atle-cowboy.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "5",
-            imageUrl: "/atle-standing.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-            isLarge: true,
-          },
-          {
-            id: "6",
-            imageUrl: "/atle-half-shave.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "7",
-            imageUrl: "/atle-cowboy.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "8",
-            imageUrl: "/atle-standing.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-          {
-            id: "9",
-            imageUrl: "/atle-half-shave.png",
-            alt: "Instagram post",
-            permalink: "https://www.instagram.com/atleliemcgrath/",
-          },
-        ]);
-      } finally {
-        setIsLoading(false);
+  const fetchPosts = async () => {
+    try {
+      setIsLoading(true);
+      setError(null);
+      const response = await fetch("/api/instagram");
+      
+      if (!response.ok) {
+        const errorData = await response.json().catch(() => ({}));
+        throw new Error(errorData.error || `HTTP ${response.status}: ${response.statusText}`);
       }
-    }
+      
+      const data = await response.json();
 
+      if (data.success && data.posts && data.posts.length > 0) {
+        setInstagramPosts(data.posts);
+      } else {
+        throw new Error(data.error || "No Instagram posts found");
+      }
+    } catch (err) {
+      console.error("Error fetching Instagram posts:", err);
+      const errorMessage = err instanceof Error ? err.message : "Failed to load Instagram posts";
+      setError(errorMessage);
+      setInstagramPosts([]);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchPosts();
   }, []);
   return (
@@ -209,8 +101,21 @@ export default function Instagram() {
           </div>
         )}
 
+        {/* Error State */}
+        {!isLoading && error && (
+          <div className="text-center py-12">
+            <p className="text-red-400 text-lg mb-4">{error}</p>
+            <button
+              onClick={fetchPosts}
+              className="px-6 py-3 bg-[#FFD700] text-[#0a0e27] font-bold rounded-lg hover:bg-[#FFE55C] transition-colors duration-300"
+            >
+              Retry
+            </button>
+          </div>
+        )}
+
         {/* Instagram Grid - Collage Style */}
-        {!isLoading && (
+        {!isLoading && !error && instagramPosts.length > 0 && (
           <div className="grid grid-cols-3 md:grid-cols-4 gap-2 md:gap-4 auto-rows-fr">
             {instagramPosts.map((post, index) => {
             // Create a more dynamic layout - some posts span multiple columns/rows
@@ -258,6 +163,13 @@ export default function Instagram() {
             </a>
             );
           })}
+          </div>
+        )}
+
+        {/* Empty State */}
+        {!isLoading && !error && instagramPosts.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-white/70 text-lg">No Instagram posts available at this time.</p>
           </div>
         )}
       </div>
