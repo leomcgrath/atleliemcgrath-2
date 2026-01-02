@@ -32,7 +32,7 @@ export default function Header() {
               <a href="/" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 HOME
               </a>
-              <a href="/#about" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <a href="/about" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 ABOUT
               </a>
               <a href="/calendar" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">

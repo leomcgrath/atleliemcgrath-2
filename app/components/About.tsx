@@ -35,7 +35,7 @@ export default function About() {
             </div>
 
             {/* Read More Button */}
-            <button className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border-2 border-[#0a0e27] text-[#0a0e27] font-bold uppercase tracking-wider rounded-lg hover:bg-[#0a0e27] hover:text-white transition-all duration-300 w-fit group">
+            <a href="/about" className="inline-flex items-center gap-3 px-6 md:px-8 py-3 md:py-4 border-2 border-[#0a0e27] text-[#0a0e27] font-bold uppercase tracking-wider rounded-lg hover:bg-[#0a0e27] hover:text-white transition-all duration-300 w-fit group">
               <svg
                 className="w-5 h-5 md:w-6 md:h-6"
                 fill="none"
@@ -63,7 +63,7 @@ export default function About() {
                   d="M9 5l7 7-7 7"
                 />
               </svg>
-            </button>
+            </a>
           </div>
         </div>
       </div>
