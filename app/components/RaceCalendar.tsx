@@ -7,6 +7,7 @@ interface RaceCard {
   city: string;
   date: string;
   branch: string;
+  result?: string;
   backgroundType: "image" | "solid";
   backgroundColor?: string;
   imageUrl?: string;
@@ -18,8 +19,9 @@ const races: RaceCard[] = [
     city: "SCHLADMING",
     date: "10 NOVEMBER",
     branch: "SLALOM",
+    result: "1ST",
     backgroundType: "image",
-    imageUrl: "/atle-cowboy.png", // Placeholder - you can replace with actual race images
+    imageUrl: "/atle-half-shave.png", // Placeholder - you can replace with actual race images
   },
   {
     location: "AFGHANISTAN",
@@ -95,6 +97,15 @@ export default function RaceCalendar() {
                       />
                     </div>
                   )}
+                </div>
+              )}
+
+              {/* Result - Top Left */}
+              {race.result && (
+                <div className="absolute top-6 left-6 md:top-8 md:left-8 z-20">
+                  <p className="text-xl md:text-2xl font-black uppercase tracking-tight text-black">
+                    {race.result}
+                  </p>
                 </div>
               )}
 
