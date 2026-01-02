@@ -19,7 +19,6 @@ const races: RaceCard[] = [
     city: "SCHLADMING",
     date: "10 NOVEMBER",
     branch: "SLALOM",
-    result: "1ST",
     backgroundType: "image",
     imageUrl: "/atle-half-shave.png", // Placeholder - you can replace with actual race images
   },
