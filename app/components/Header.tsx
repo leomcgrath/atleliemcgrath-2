@@ -29,13 +29,13 @@ export default function Header() {
           <nav className="bg-[#FFD700] rounded-sm px-4 md:px-6 lg:px-8 py-3 md:py-4 flex items-center justify-between absolute left-[40%] right-[1%] min-h-[75px] md:min-h-[85px] z-50">
             {/* Navigation Links - Left side */}
             <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-8">
-              <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <a href="/" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 HOME
               </a>
-              <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <a href="/#about" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 ABOUT
               </a>
-              <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <a href="/calendar" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 SEASON
               </a>
               <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
