@@ -7,6 +7,18 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "flagcdn.com",
       },
+      {
+        protocol: "https",
+        hostname: "*.cdninstagram.com",
+      },
+      {
+        protocol: "https",
+        hostname: "scontent*.cdninstagram.com",
+      },
+      {
+        protocol: "https",
+        hostname: "instagram.com",
+      },
     ],
   },
 };
