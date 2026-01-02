@@ -36,22 +36,25 @@ const races: RaceCard[] = [
     branch: "SLALOM",
     backgroundType: "solid",
     backgroundColor: "#FFD700", // Yellow
+    imageUrl: "https://flagcdn.com/w1280/it.png", // Italy flag
   },
   {
-    location: "CHINA",
-    city: "SHANGHAI",
+    location: "SWITZERLAND",
+    city: "ADELBODEN",
     date: "15 MARCH",
     branch: "SUPER-G",
     backgroundType: "solid",
     backgroundColor: "#0a0e27", // Dark blue
+    imageUrl: "https://flagcdn.com/w1280/ch.png", // Switzerland flag
   },
   {
-    location: "JAPAN",
-    city: "SUZUKA",
+    location: "SWITZERLAND",
+    city: "WENGEN",
     date: "29 MARCH",
     branch: "DOWNHILL",
     backgroundType: "solid",
     backgroundColor: "#0a0e27", // Dark blue
+    imageUrl: "https://flagcdn.com/w1280/ch.png", // Switzerland flag
   },
 ];
 
@@ -81,27 +84,17 @@ export default function RaceCalendar() {
                   className="absolute inset-0"
                   style={{ backgroundColor: race.backgroundColor || "#0a0e27" }}
                 >
-                  {/* Track outline placeholder - you can add SVG track layouts here */}
-                  <div className="absolute top-8 left-8 right-8 h-32 opacity-30">
-                    <svg viewBox="0 0 200 100" className="w-full h-full" preserveAspectRatio="none">
-                      <path
-                        d="M10,50 Q30,20 60,30 T120,40 Q150,50 180,50 L190,50"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        fill="none"
-                        strokeLinecap="round"
-                        className={race.backgroundColor === "#FFD700" ? "text-black" : "text-white"}
+                  {/* Grayscale flag image */}
+                  {race.imageUrl && (
+                    <div className="absolute inset-0 opacity-20">
+                      <Image
+                        src={race.imageUrl}
+                        alt={race.location}
+                        fill
+                        className="object-cover grayscale"
                       />
-                      <path
-                        d="M10,50 Q30,80 60,70 T120,60 Q150,50 180,50"
-                        stroke="currentColor"
-                        strokeWidth="3"
-                        fill="none"
-                        strokeLinecap="round"
-                        className={race.backgroundColor === "#FFD700" ? "text-black" : "text-white"}
-                      />
-                    </svg>
-                  </div>
+                    </div>
+                  )}
                 </div>
               )}
 
