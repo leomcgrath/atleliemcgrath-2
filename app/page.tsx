@@ -3,22 +3,45 @@ import Header from "./components/Header";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white">
-      {/* Header */}
+    <div className="min-h-screen bg-white relative">
+      {/* Background images starting from top - behind everything */}
+      <div className="absolute inset-0 z-0 min-h-screen">
+        {/* Left side image */}
+        <div className="absolute inset-0 w-1/2 left-0">
+          <Image
+            src="/atle-cowboy.png"
+            alt="Background"
+            fill
+            className="object-cover object-center"
+            quality={90}
+          />
+          <div className="absolute inset-0 backdrop-blur-md bg-slate-200/40"></div>
+        </div>
+        
+        {/* Vertical divider line */}
+        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-black/20 z-10 transform -translate-x-1/2"></div>
+        
+        {/* Right side image */}
+        <div className="absolute inset-0 w-1/2 right-0">
+          <Image
+            src="/atle-standing.png"
+            alt="Background"
+            fill
+            className="object-cover object-center"
+            quality={90}
+          />
+          <div className="absolute inset-0 backdrop-blur-md bg-teal-600/40"></div>
+        </div>
+      </div>
+
+      {/* Header - on top of images */}
       <Header />
 
       {/* Main Hero Section - Split Layout */}
-      <main className="flex flex-col md:flex-row min-h-[calc(100vh-80px)]">
+      <main className="flex flex-col md:flex-row min-h-screen relative z-10">
         {/* Left Section - Portrait */}
-        <div className="w-full md:w-1/2 relative bg-gradient-to-br from-slate-200 via-slate-100 to-slate-200 overflow-hidden min-h-[50vh] md:min-h-full">
-          {/* Background pattern for architectural elements */}
-          <div className="absolute inset-0 opacity-20">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.1) 2px, rgba(0,0,0,0.1) 4px)'
-            }}></div>
-          </div>
-          
-          {/* Portrait image */}
+        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+          {/* Portrait image - same as background but without blur for content area */}
           <div className="absolute inset-0">
             <Image
               src="/atle-cowboy.png"
@@ -46,15 +69,8 @@ export default function Home() {
         </div>
 
         {/* Right Section - Merchandise/Sale */}
-        <div className="w-full md:w-1/2 relative bg-gradient-to-br from-slate-100 to-slate-200 overflow-hidden min-h-[50vh] md:min-h-full">
-          {/* Background texture */}
-          <div className="absolute inset-0 opacity-30">
-            <div className="absolute inset-0" style={{
-              backgroundImage: 'repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 4px)'
-            }}></div>
-          </div>
-
-          {/* Merchandise image */}
+        <div className="w-full md:w-1/2 relative overflow-hidden min-h-[50vh] md:min-h-full">
+          {/* Merchandise image - same as background but without blur for content area */}
           <div className="absolute inset-0">
             <Image
               src="/atle-standing.png"
