@@ -38,7 +38,7 @@ export default function Header() {
               <a href="/calendar" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 SEASON
               </a>
-              <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
+              <a href="/partners" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">
                 PARTNERS
               </a>
               <a href="#" className="text-black font-black text-xs lg:text-sm uppercase tracking-wider hover:opacity-70 transition-opacity">

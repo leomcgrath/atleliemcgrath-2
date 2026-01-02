@@ -10,11 +10,102 @@ interface Race {
   countryCode: string;
   discipline: string;
   isNextRace?: boolean;
+  position?: string;
 }
 
 const races: Race[] = [
   {
     round: 1,
+    country: "AUSTRIA",
+    city: "SÖLDEN",
+    date: "26 OCT",
+    countryCode: "at",
+    discipline: "SLALOM",
+    position: "P3",
+  },
+  {
+    round: 2,
+    country: "FINLAND",
+    city: "LEVI",
+    date: "16 NOV",
+    countryCode: "fi",
+    discipline: "SLALOM",
+    position: "DNF",
+  },
+  {
+    round: 3,
+    country: "AUSTRIA",
+    city: "GURGL",
+    date: "22 NOV",
+    countryCode: "at",
+    discipline: "SLALOM",
+    position: "P3",
+  },
+  {
+    round: 4,
+    country: "USA",
+    city: "COPPER MT",
+    date: "27 NOV",
+    countryCode: "us",
+    discipline: "SUPER G",
+    position: "P12",
+  },
+  {
+    round: 5,
+    country: "USA",
+    city: "COPPER MT",
+    date: "28 NOV",
+    countryCode: "us",
+    discipline: "GIANT SLALOM",
+    position: "DNQ",
+  },
+  {
+    round: 6,
+    country: "USA",
+    city: "BEAVER CREEK",
+    date: "07 DEC",
+    countryCode: "us",
+    discipline: "GIANT SLALOM",
+    position: "P7",
+  },
+  {
+    round: 7,
+    country: "FRANCE",
+    city: "VAL D'ISERE",
+    date: "13 DEC",
+    countryCode: "fr",
+    discipline: "GIANT SLALOM",
+    position: "P17",
+  },
+  {
+    round: 8,
+    country: "FRANCE",
+    city: "VAL D'ISERE",
+    date: "14 DEC",
+    countryCode: "fr",
+    discipline: "SLALOM",
+    position: "DNF",
+  },
+  {
+    round: 9,
+    country: "ITALY",
+    city: "ALTA BADIA",
+    date: "21 DEC",
+    countryCode: "it",
+    discipline: "GIANT SLALOM",
+    position: "P4",
+  },
+  {
+    round: 10,
+    country: "ITALY",
+    city: "ALTA BADIA",
+    date: "22 DEC",
+    countryCode: "it",
+    discipline: "SLALOM",
+    position: "P1",
+  },
+  {
+    round: 11,
     country: "ITALY",
     city: "MADONNA DI CAMPIGLIO",
     date: "07 JAN",
@@ -23,7 +114,7 @@ const races: Race[] = [
     isNextRace: true,
   },
   {
-    round: 2,
+    round: 12,
     country: "SWITZERLAND",
     city: "ADELBODEN",
     date: "10 JAN",
@@ -31,7 +122,7 @@ const races: Race[] = [
     discipline: "GIANT SLALOM",
   },
   {
-    round: 3,
+    round: 13,
     country: "SWITZERLAND",
     city: "ADELBODEN",
     date: "11 JAN",
@@ -39,7 +130,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 4,
+    round: 14,
     country: "SWITZERLAND",
     city: "WENGEN",
     date: "18 JAN",
@@ -47,7 +138,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 5,
+    round: 15,
     country: "AUSTRIA",
     city: "KITZBÜHEL",
     date: "25 JAN",
@@ -55,7 +146,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 6,
+    round: 16,
     country: "AUSTRIA",
     city: "SCHLADMING",
     date: "27 JAN",
@@ -63,7 +154,7 @@ const races: Race[] = [
     discipline: "GIANT SLALOM",
   },
   {
-    round: 7,
+    round: 17,
     country: "AUSTRIA",
     city: "SCHLADMING",
     date: "28 JAN",
@@ -71,7 +162,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 8,
+    round: 18,
     country: "ITALY",
     city: "BORMIO",
     date: "14 FEB",
@@ -79,7 +170,7 @@ const races: Race[] = [
     discipline: "GIANT SLALOM",
   },
   {
-    round: 9,
+    round: 19,
     country: "ITALY",
     city: "BORMIO",
     date: "16 FEB",
@@ -87,7 +178,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 10,
+    round: 20,
     country: "SLOVENIA",
     city: "KRANJSKA GORA",
     date: "07 MAR",
@@ -95,7 +186,7 @@ const races: Race[] = [
     discipline: "GIANT SLALOM",
   },
   {
-    round: 11,
+    round: 21,
     country: "SLOVENIA",
     city: "KRANJSKA GORA",
     date: "08 MAR",
@@ -103,7 +194,7 @@ const races: Race[] = [
     discipline: "SLALOM",
   },
   {
-    round: 12,
+    round: 22,
     country: "NORWAY",
     city: "HAFJELL",
     date: "24 MAR",
@@ -111,7 +202,7 @@ const races: Race[] = [
     discipline: "GIANT SLALOM",
   },
   {
-    round: 13,
+    round: 23,
     country: "NORWAY",
     city: "HAFJELL",
     date: "25 MAR",
@@ -169,12 +260,30 @@ export default function RaceCalendarPage() {
             {races.map((race) => (
               <div
                 key={race.round}
-                className={`rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl ${
+                className={`rounded-lg overflow-hidden shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-3xl relative ${
                   race.isNextRace
                     ? "bg-[#FFD700] text-black border-2 border-black"
                     : "bg-[#0a0e27] border border-[#1a1f3a] text-white"
                 }`}
               >
+                {/* Position Badge */}
+                {race.position && (
+                  <div
+                    className={`absolute top-2 right-2 px-2 py-1 rounded-md text-xs md:text-sm font-black uppercase tracking-tighter ${
+                      race.position === "P1"
+                        ? "bg-[#FFD700] text-black"
+                        : race.position === "P2"
+                        ? "bg-[#C0C0C0] text-black"
+                        : race.position === "P3"
+                        ? "bg-[#CD7F32] text-black"
+                        : race.isNextRace
+                        ? "bg-transparent text-[#FFD700]"
+                        : "bg-transparent text-white"
+                    }`}
+                  >
+                    {race.position}
+                  </div>
+                )}
                 <div className="p-4 md:p-5">
                   {/* Country and City */}
                   <h3
