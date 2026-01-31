@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 
-interface Race {
+export interface Race {
   round: number;
   country: string;
   city: string;
@@ -13,206 +13,11 @@ interface Race {
   position?: string;
 }
 
-const races: Race[] = [
-  {
-    round: 1,
-    country: "AUSTRIA",
-    city: "SÖLDEN",
-    date: "26 OCT",
-    countryCode: "at",
-    discipline: "SLALOM",
-    position: "P3",
-  },
-  {
-    round: 2,
-    country: "FINLAND",
-    city: "LEVI",
-    date: "16 NOV",
-    countryCode: "fi",
-    discipline: "SLALOM",
-    position: "DNF",
-  },
-  {
-    round: 3,
-    country: "AUSTRIA",
-    city: "GURGL",
-    date: "22 NOV",
-    countryCode: "at",
-    discipline: "SLALOM",
-    position: "P3",
-  },
-  {
-    round: 4,
-    country: "USA",
-    city: "COPPER MT",
-    date: "27 NOV",
-    countryCode: "us",
-    discipline: "SUPER G",
-    position: "P12",
-  },
-  {
-    round: 5,
-    country: "USA",
-    city: "COPPER MT",
-    date: "28 NOV",
-    countryCode: "us",
-    discipline: "GIANT SLALOM",
-    position: "DNQ",
-  },
-  {
-    round: 6,
-    country: "USA",
-    city: "BEAVER CREEK",
-    date: "07 DEC",
-    countryCode: "us",
-    discipline: "GIANT SLALOM",
-    position: "P7",
-  },
-  {
-    round: 7,
-    country: "FRANCE",
-    city: "VAL D'ISERE",
-    date: "13 DEC",
-    countryCode: "fr",
-    discipline: "GIANT SLALOM",
-    position: "P17",
-  },
-  {
-    round: 8,
-    country: "FRANCE",
-    city: "VAL D'ISERE",
-    date: "14 DEC",
-    countryCode: "fr",
-    discipline: "SLALOM",
-    position: "DNF",
-  },
-  {
-    round: 9,
-    country: "ITALY",
-    city: "ALTA BADIA",
-    date: "21 DEC",
-    countryCode: "it",
-    discipline: "GIANT SLALOM",
-    position: "P4",
-  },
-  {
-    round: 10,
-    country: "ITALY",
-    city: "ALTA BADIA",
-    date: "22 DEC",
-    countryCode: "it",
-    discipline: "SLALOM",
-    position: "P1",
-  },
-  {
-    round: 11,
-    country: "ITALY",
-    city: "MADONNA DI CAMPIGLIO",
-    date: "07 JAN",
-    countryCode: "it",
-    discipline: "SLALOM",
-    isNextRace: true,
-  },
-  {
-    round: 12,
-    country: "SWITZERLAND",
-    city: "ADELBODEN",
-    date: "10 JAN",
-    countryCode: "ch",
-    discipline: "GIANT SLALOM",
-  },
-  {
-    round: 13,
-    country: "SWITZERLAND",
-    city: "ADELBODEN",
-    date: "11 JAN",
-    countryCode: "ch",
-    discipline: "SLALOM",
-  },
-  {
-    round: 14,
-    country: "SWITZERLAND",
-    city: "WENGEN",
-    date: "18 JAN",
-    countryCode: "ch",
-    discipline: "SLALOM",
-  },
-  {
-    round: 15,
-    country: "AUSTRIA",
-    city: "KITZBÜHEL",
-    date: "25 JAN",
-    countryCode: "at",
-    discipline: "SLALOM",
-  },
-  {
-    round: 16,
-    country: "AUSTRIA",
-    city: "SCHLADMING",
-    date: "27 JAN",
-    countryCode: "at",
-    discipline: "GIANT SLALOM",
-  },
-  {
-    round: 17,
-    country: "AUSTRIA",
-    city: "SCHLADMING",
-    date: "28 JAN",
-    countryCode: "at",
-    discipline: "SLALOM",
-  },
-  {
-    round: 18,
-    country: "ITALY",
-    city: "BORMIO",
-    date: "14 FEB",
-    countryCode: "it",
-    discipline: "GIANT SLALOM",
-  },
-  {
-    round: 19,
-    country: "ITALY",
-    city: "BORMIO",
-    date: "16 FEB",
-    countryCode: "it",
-    discipline: "SLALOM",
-  },
-  {
-    round: 20,
-    country: "SLOVENIA",
-    city: "KRANJSKA GORA",
-    date: "07 MAR",
-    countryCode: "si",
-    discipline: "GIANT SLALOM",
-  },
-  {
-    round: 21,
-    country: "SLOVENIA",
-    city: "KRANJSKA GORA",
-    date: "08 MAR",
-    countryCode: "si",
-    discipline: "SLALOM",
-  },
-  {
-    round: 22,
-    country: "NORWAY",
-    city: "HAFJELL",
-    date: "24 MAR",
-    countryCode: "no",
-    discipline: "GIANT SLALOM",
-  },
-  {
-    round: 23,
-    country: "NORWAY",
-    city: "HAFJELL",
-    date: "25 MAR",
-    countryCode: "no",
-    discipline: "SLALOM",
-  },
-];
+interface RaceCalendarPageProps {
+  races: Race[];
+}
 
-
-export default function RaceCalendarPage() {
+export default function RaceCalendarPage({ races }: RaceCalendarPageProps) {
   const nextRace = races.find((r) => r.isNextRace) || races[0];
 
   return (
@@ -246,7 +51,7 @@ export default function RaceCalendarPage() {
                 NEXT RACE:
               </p>
               <p className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#FFD700] uppercase tracking-tighter leading-tight pb-40">
-                {nextRace.city}
+                {nextRace?.city ?? "—"}
               </p>
             </div>
           </div>
@@ -266,24 +71,22 @@ export default function RaceCalendarPage() {
                     : "bg-[#0a0e27] border border-[#1a1f3a] text-white"
                 }`}
               >
-                {/* Position Badge */}
-                {race.position && (
-                  <div
-                    className={`absolute top-2 right-2 px-2 py-1 rounded-md text-xs md:text-sm font-black uppercase tracking-tighter ${
-                      race.position === "P1"
-                        ? "bg-[#FFD700] text-black"
-                        : race.position === "P2"
-                        ? "bg-[#C0C0C0] text-black"
-                        : race.position === "P3"
-                        ? "bg-[#CD7F32] text-black"
-                        : race.isNextRace
-                        ? "bg-transparent text-[#FFD700]"
-                        : "bg-transparent text-white"
-                    }`}
-                  >
-                    {race.position}
-                  </div>
-                )}
+                {/* Position / Placement Badge */}
+                <div
+                  className={`absolute top-2 right-2 px-2 py-1 rounded-md text-xs md:text-sm font-black uppercase tracking-tighter ${
+                    race.position === "P1"
+                      ? "bg-[#FFD700] text-black"
+                      : race.position === "P2"
+                      ? "bg-[#C0C0C0] text-black"
+                      : race.position === "P3"
+                      ? "bg-[#CD7F32] text-black"
+                      : race.isNextRace
+                      ? "bg-transparent text-[#FFD700]"
+                      : "bg-transparent text-white"
+                  }`}
+                >
+                  {race.position ?? "—"}
+                </div>
                 <div className="p-4 md:p-5">
                   {/* Country and City */}
                   <h3
@@ -326,7 +129,7 @@ export default function RaceCalendarPage() {
                       race.isNextRace ? "text-black/90" : "text-white/90"
                     }`}
                   >
-                    {race.discipline}
+                    {race.discipline || "—"}
                   </div>
                 </div>
               </div>

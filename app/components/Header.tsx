@@ -1,6 +1,9 @@
 import Image from "next/image";
+import { getNextRace } from "../lib/race-schedule";
 
-export default function Header() {
+export default async function Header() {
+  const nextRace = await getNextRace();
+
   return (
     <header className="absolute top-0 left-0 w-full z-50">
       {/* Dark grey top bar */}
@@ -46,11 +49,19 @@ export default function Header() {
               </a>
             </div>
             
-            {/* Event Announcement - Right side */}
-            <div className="text-black font-black text-xs md:text-sm lg:text-base uppercase tracking-wider text-right">
-              <div className="hidden sm:block leading-tight">MADONNA DI CAMPIGLIO - SLALOM</div>
-              <div className="text-[10px] md:text-xs lg:text-sm leading-tight">07 JAN</div>
-            </div>
+            {/* Next race - Right side */}
+            {nextRace && (
+              <div className="text-black font-black text-xs md:text-sm lg:text-base uppercase tracking-wider text-right">
+                <div className="hidden sm:block leading-tight">
+                  {nextRace.discipline
+                    ? `${nextRace.city} - ${nextRace.discipline}`
+                    : nextRace.city}
+                </div>
+                <div className="text-[10px] md:text-xs lg:text-sm leading-tight">
+                  {nextRace.date}
+                </div>
+              </div>
+            )}
           </nav>
         </div>
       </div>
