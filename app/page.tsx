@@ -4,8 +4,11 @@ import RaceCalendar from "./components/RaceCalendar";
 import Partners from "./components/Partners";
 import Instagram from "./components/Instagram";
 import About from "./components/About";
+import { getRaces } from "./lib/race-schedule";
 
-export default function Home() {
+export default async function Home() {
+  const races = await getRaces();
+
   return (
     <div className="min-h-screen bg-white relative overflow-hidden">
       {/* Header - on top of images */}
@@ -74,8 +77,8 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Race Calendar */}
-      <RaceCalendar />
+      {/* Race Calendar - horizontal scroll, next race centered */}
+      <RaceCalendar races={races} />
 
       {/* Partners */}
       <Partners />

@@ -36,6 +36,47 @@ function todayDateString(): string {
   return `${y}-${m}-${d}`;
 }
 
+/** Race shape for calendar and home carousel (matches Race in RaceCalendarPage). */
+export interface RaceDisplay {
+  round: number;
+  country: string;
+  city: string;
+  date: string;
+  countryCode: string;
+  discipline: string;
+  isNextRace?: boolean;
+  position?: string;
+}
+
+/** Fetch all races with isNextRace set from date. Used by home carousel and calendar page. */
+export async function getRaces(): Promise<RaceDisplay[]> {
+  try {
+    if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
+      return [];
+    }
+    const { supabase } = await import("./supabase");
+    const today = todayDateString();
+    const { data: rows } = await supabase
+      .from("race_schedule")
+      .select("id, round, country, city, race_date, country_code, discipline, position")
+      .order("race_date", { ascending: true });
+    const raw = (rows as RaceScheduleRow[] | null) ?? [];
+    const nextRaceIndex = raw.findIndex((row) => row.race_date >= today);
+    return raw.map((row, index) => ({
+      round: row.round,
+      country: row.country,
+      city: row.city,
+      date: formatRaceDate(row.race_date),
+      countryCode: (row.country_code ?? "").trim().toLowerCase(),
+      discipline: row.discipline ?? "",
+      isNextRace: nextRaceIndex >= 0 && index === nextRaceIndex,
+      position: row.position?.trim() || undefined,
+    }));
+  } catch {
+    return [];
+  }
+}
+
 /** Fetch the next upcoming race (first with race_date >= today). Used by Header and calendar. */
 export async function getNextRace(): Promise<NextRaceInfo | null> {
   try {
