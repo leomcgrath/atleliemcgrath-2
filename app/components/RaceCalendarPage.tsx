@@ -25,7 +25,7 @@ export default function RaceCalendarPage({ races }: RaceCalendarPageProps) {
       {/* Hero Section */}
       <section className="relative w-full h-[50vh] min-h-[400px] md:h-[60vh] md:min-h-[500px] overflow-hidden">
         {/* Background Image */}
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 -z-10">
           <Image
             src="/atle-calendar.png"
             alt="Race Calendar Background"
@@ -43,14 +43,14 @@ export default function RaceCalendarPage({ races }: RaceCalendarPageProps) {
         {/* Content */}
         <div className="relative z-10 h-full flex flex-col justify-center px-6 md:px-12 lg:px-20 pt-[85px]">
           <div className="max-w-7xl mx-auto w-full">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tighter mb-4 md:mb-6 leading-none pt-50">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-white uppercase tracking-tighter mb-4 md:mb-6 leading-none">
               2025/2026 SEASON
             </h1>
             <div className="mb-4">
               <p className="text-lg md:text-xl lg:text-2xl font-bold text-[#FFD700] uppercase tracking-wider mb-1 md:mb-2">
                 NEXT RACE:
               </p>
-              <p className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#FFD700] uppercase tracking-tighter leading-tight pb-40">
+              <p className="text-3xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-[#FFD700] uppercase tracking-tighter leading-tight">
                 {nextRace?.city ?? "—"}
               </p>
             </div>
@@ -113,7 +113,7 @@ export default function RaceCalendarPage({ races }: RaceCalendarPageProps) {
 
                   {/* Flag */}
                   <div className="w-full h-20 md:h-24 mb-3 md:mb-4 flex items-center justify-center">
-                    <div className="relative w-16 h-12 md:w-20 md:h-14">
+                    <div className="w-16 h-12 md:w-20 md:h-14 relative">
                       <Image
                         src={`https://flagcdn.com/w1280/${race.countryCode}.png`}
                         alt={race.country}

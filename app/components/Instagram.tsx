@@ -47,6 +47,7 @@ export default function Instagram() {
   useEffect(() => {
     fetchPosts();
   }, []);
+
   return (
     <section className="w-full bg-[#0a0e27] py-16 px-4 md:px-8 relative z-10">
       <div className="max-w-7xl mx-auto">
@@ -133,7 +134,7 @@ export default function Instagram() {
               rel="noopener noreferrer"
               className={`relative overflow-hidden rounded-lg aspect-square group cursor-pointer transition-all duration-300 hover:scale-105 hover:z-10 ${getGridClasses()}`}
             >
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 -z-10">
                 <Image
                   src={post.imageUrl}
                   alt={post.alt}
@@ -145,11 +146,11 @@ export default function Instagram() {
                       : "(max-width: 768px) 100vw, 33vw"
                   }
                 />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300"></div>
               </div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300 pointer-events-none"></div>
 
               {/* Instagram Icon Overlay on Hover */}
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10">
                 <div className="bg-white/90 rounded-full p-4">
                   <svg
                     className="w-8 h-8 md:w-10 md:h-10"
